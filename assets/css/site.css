@@ -181,17 +181,31 @@
 }
 
 @media (max-width: 576px) {
-  .navbar .navbar-nav {
-    flex-wrap: wrap;
-    justify-content: flex-end;
+  .navbar {
+    opacity: 1;
   }
 
   body.fixed-top-nav {
-    padding-top: 92px;
+    padding-top: 57px;
+  }
+
+  .navbar .navbar-collapse {
+    margin-top: 0.5rem;
+  }
+
+  .navbar .navbar-nav {
+    align-items: flex-end;
+    gap: 0.15rem;
+  }
+
+  .navbar .nav-link,
+  #search-toggle .nav-link {
+    display: inline-block;
+    padding: 0.35rem 0;
   }
 
   .post .profile {
-    float: none;
+    float: none !important;
     width: 145px;
     min-width: 145px;
     margin: 0 auto 1.5rem;

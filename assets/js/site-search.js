@@ -1,4 +1,18 @@
 (function () {
+  var navToggle = document.getElementById("navbar-toggler");
+  var nav = document.getElementById("navbar-nav");
+
+  if (navToggle && nav) {
+    navToggle.addEventListener("click", function () {
+      var expanded = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!expanded));
+      navToggle.classList.toggle("collapsed", expanded);
+      nav.classList.toggle("show", !expanded);
+    });
+  }
+})();
+
+(function () {
   var modal = document.getElementById("search-modal");
   var toggle = document.getElementById("search-toggle");
   var close = document.getElementById("search-close");
