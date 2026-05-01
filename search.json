@@ -1,0 +1,40 @@
+---
+layout: null
+permalink: /search.json
+---
+[
+  {
+    "title": "About",
+    "url": {{ "/" | relative_url | jsonify }},
+    "content": "Hi! I am Jordan. Welcome to my personal page. This will be used to collate projects, notes, images, hike records and various other things I want to keep in one place."
+  },
+  {
+    "title": "Projects",
+    "url": {{ "/projects/" | relative_url | jsonify }},
+    "content": "This website is the project."
+  },
+  {
+    "title": "Hiking",
+    "url": {{ "/hiking/" | relative_url | jsonify }},
+    "content": "Munro records, dates, locations, companions, and original reports."
+  },
+  {
+    "title": "Blog",
+    "url": {{ "/blog/" | relative_url | jsonify }},
+    "content": "News, notes, and updates."
+  }
+  {% for hike in site.hikes %},
+  {
+    "title": {{ hike.title | jsonify }},
+    "url": {{ hike.url | relative_url | jsonify }},
+    "content": {{ hike.content | strip_html | normalize_whitespace | append: " " | append: hike.location | append: " " | append: hike.companions | jsonify }}
+  }
+  {% endfor %}
+  {% for mountain in site.data.climbed_munros %},
+  {
+    "title": {{ mountain.name | jsonify }},
+    "url": {{ mountain.report_url | relative_url | jsonify }},
+    "content": {{ mountain.region | append: " " | append: mountain.height | append: " " | append: mountain.climbed_date | append: " " | append: mountain.companions | append: " " | append: mountain.report_title | jsonify }}
+  }
+  {% endfor %}
+]

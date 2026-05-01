@@ -17,7 +17,6 @@ title: hiking
           {% if mountain.climbed_date %}&middot; Climbed {{ mountain.climbed_date }}{% endif %}
           {% if mountain.companions %}&middot; {% if mountain.companions == 'Solo' %}Solo{% else %}With {{ mountain.companions }}{% endif %}{% endif %}
         </p>
-        <p class="report-link">Report: <a href="{{ mountain.report_url | relative_url }}">{{ mountain.report_title }}</a></p>
       </article>
     {% endfor %}
   </div>
