@@ -3,12 +3,12 @@ layout: default
 title: hiking
 ---
 <h1>Hiking</h1>
-<p>{{ site.data.climbed_munros.size }} Munros climbed so far.</p>
-<div class="grid">
+<p class="page-intro">{{ site.data.climbed_munros.size }} Munros climbed so far.</p>
+<div class="grid hike-grid">
   {% for mountain in site.data.climbed_munros %}
     <a class="card" href="{{ mountain.report_url | relative_url }}">
       <h2>{{ mountain.name }}</h2>
-      <p class="meta">{{ mountain.height }} m · {{ mountain.region }}</p>
+      <p class="meta">{{ mountain.height }} m &middot; {{ mountain.region }}</p>
       {% if mountain.climbed_date %}<p class="meta">Climbed {{ mountain.climbed_date }}</p>{% endif %}
       {% if mountain.companions %}<p class="meta">{% if mountain.companions == 'Solo' %}Solo{% else %}With {{ mountain.companions }}{% endif %}</p>{% endif %}
       <p>Report: {{ mountain.report_title }}</p>
