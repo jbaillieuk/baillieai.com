@@ -1,14 +1,5 @@
 /* Small site-specific additions on top of the upstream al-folio theme. */
 
-.navbar .nav-link {
-  margin-left: 1rem;
-}
-
-.navbar .nav-link.active {
-  color: var(--global-theme-color) !important;
-  font-weight: 700;
-}
-
 .post .profile {
   width: 30%;
   min-width: 170px;
@@ -42,7 +33,6 @@
   color: var(--global-theme-color);
 }
 
-.home-grid,
 .hike-grid,
 .grid {
   display: grid;
@@ -55,7 +45,6 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.site-card,
 .grid .card {
   border: 1px solid var(--global-divider-color);
   color: var(--global-text-color);
@@ -63,14 +52,12 @@
   box-shadow: none;
 }
 
-.site-card:hover,
 .grid .card:hover {
   border-color: var(--global-theme-color);
   color: var(--global-text-color);
   text-decoration: none;
 }
 
-.site-card h2,
 .grid .card h2 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -100,19 +87,9 @@
 }
 
 @media (max-width: 576px) {
-  .navbar .container {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .navbar .navbar-nav {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .navbar .nav-link {
-    margin-left: 0;
-    padding-right: 0.35rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   body.fixed-top-nav {
@@ -126,7 +103,6 @@
     margin: 0 auto 1.5rem;
   }
 
-  .home-grid,
   .hike-grid,
   .grid {
     grid-template-columns: 1fr;

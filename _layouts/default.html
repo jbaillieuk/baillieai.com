@@ -16,24 +16,38 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 </head>
-<body class="fixed-top-nav sticky-bottom-footer">
+<body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} sticky-bottom-footer">
   <header>
-    <nav id="navbar" class="navbar navbar-light fixed-top" role="navigation">
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
       <div class="container">
-        <a class="navbar-brand title font-weight-lighter" href="{{ '/' | relative_url }}">
-          <span class="font-weight-bold">Jordan</span> Baillie
-        </a>
-        <div class="navbar-nav ml-auto flex-row align-items-center">
-          <a class="nav-item nav-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">about</a>
-          <a class="nav-item nav-link {% if page.url contains '/projects/' %}active{% endif %}" href="{{ '/projects/' | relative_url }}">projects</a>
-          <a class="nav-item nav-link {% if page.url contains '/hiking/' %}active{% endif %}" href="{{ '/hiking/' | relative_url }}">hiking</a>
-          <a class="nav-item nav-link {% if page.url contains '/blog/' %}active{% endif %}" href="{{ '/blog/' | relative_url }}">blog</a>
-          <button id="light-toggle" title="Change theme" type="button">
-            <i class="fa-half-sun-moon" id="light-toggle-system" aria-hidden="true"></i>
-            <i class="fa-solid fa-moon" id="light-toggle-dark" aria-hidden="true"></i>
-            <i class="fa-solid fa-sun" id="light-toggle-light" aria-hidden="true"></i>
-            <span class="sr-only">Change theme</span>
-          </button>
+        {% unless page.permalink == '/' %}
+          <a class="navbar-brand title font-weight-lighter" href="{{ '/' | relative_url }}">
+            <span class="font-weight-bold">Jordan</span> Baillie
+          </a>
+        {% endunless %}
+        <div class="navbar-collapse text-right">
+          <ul class="navbar-nav ml-auto flex-nowrap">
+            <li class="nav-item {% if page.url == '/' %}active{% endif %}">
+              <a class="nav-link" href="{{ '/' | relative_url }}">about</a>
+            </li>
+            <li class="nav-item {% if page.url contains '/projects/' %}active{% endif %}">
+              <a class="nav-link" href="{{ '/projects/' | relative_url }}">projects</a>
+            </li>
+            <li class="nav-item {% if page.url contains '/hiking/' %}active{% endif %}">
+              <a class="nav-link" href="{{ '/hiking/' | relative_url }}">hiking</a>
+            </li>
+            <li class="nav-item {% if page.url contains '/blog/' %}active{% endif %}">
+              <a class="nav-link" href="{{ '/blog/' | relative_url }}">blog</a>
+            </li>
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme" type="button">
+                <i class="fa-half-sun-moon" id="light-toggle-system" aria-hidden="true"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark" aria-hidden="true"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light" aria-hidden="true"></i>
+                <span class="sr-only">Change theme</span>
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -44,8 +58,8 @@
   <footer class="sticky-bottom mt-5" role="contentinfo">
     <div class="container">
       &copy; {{ 'now' | date: '%Y' }} Jordan Baillie.
-      <a href="mailto:jordan@baillieai.com">Email</a>.
-      <a href="https://www.linkedin.com/in/jordanbaillie/">LinkedIn</a>.
+      Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> with
+      <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener">al-folio</a>.
     </div>
   </footer>
 
