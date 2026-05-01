@@ -6,17 +6,17 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
   </header>
 
-  <table class="table">
-    <tbody>
-      {% if page.display_date or page.date %}<tr><th>Date</th><td>{% if page.display_date %}{{ page.display_date }}{% else %}{{ page.date | date: '%-d %B %Y' }}{% endif %}</td></tr>{% endif %}
-      {% if page.companions %}<tr><th>With</th><td>{{ page.companions }}</td></tr>{% endif %}
-      {% if page.location %}<tr><th>Location</th><td>{{ page.location }}</td></tr>{% endif %}
-      {% if page.route %}<tr><th>Route</th><td>{{ page.route }}</td></tr>{% endif %}
-      {% if page.distance %}<tr><th>Distance</th><td>{{ page.distance }}</td></tr>{% endif %}
-      {% if page.time_taken %}<tr><th>Time</th><td>{{ page.time_taken }}</td></tr>{% endif %}
-      {% if page.ascent %}<tr><th>Ascent</th><td>{{ page.ascent }}</td></tr>{% endif %}
-      {% if page.weather %}<tr><th>Weather</th><td>{{ page.weather }}</td></tr>{% endif %}
-      {% if page.source_url %}<tr><th>Original report</th><td><a href="{{ page.source_url }}">{{ page.source_label | default: 'View source' }}</a></td></tr>{% endif %}
-    </tbody>
-  </table>
+  <dl class="metadata-list">
+    {% if page.display_date or page.date %}
+      <div class="metadata-row"><dt>Date</dt><dd>{% if page.display_date %}{{ page.display_date }}{% else %}{{ page.date | date: '%-d %B %Y' }}{% endif %}</dd></div>
+    {% endif %}
+    {% if page.companions %}<div class="metadata-row"><dt>With</dt><dd>{{ page.companions }}</dd></div>{% endif %}
+    {% if page.location %}<div class="metadata-row"><dt>Location</dt><dd>{{ page.location }}</dd></div>{% endif %}
+    {% if page.route %}<div class="metadata-row"><dt>Route</dt><dd>{{ page.route }}</dd></div>{% endif %}
+    {% if page.distance %}<div class="metadata-row"><dt>Distance</dt><dd>{{ page.distance }}</dd></div>{% endif %}
+    {% if page.time_taken %}<div class="metadata-row"><dt>Time</dt><dd>{{ page.time_taken }}</dd></div>{% endif %}
+    {% if page.ascent %}<div class="metadata-row"><dt>Ascent</dt><dd>{{ page.ascent }}</dd></div>{% endif %}
+    {% if page.weather %}<div class="metadata-row"><dt>Weather</dt><dd>{{ page.weather }}</dd></div>{% endif %}
+    {% if page.source_url %}<div class="metadata-row"><dt>Original report</dt><dd><a href="{{ page.source_url }}">{{ page.source_label | default: 'View source' }}</a></dd></div>{% endif %}
+  </dl>
 </div>

@@ -8,15 +8,17 @@ title: hiking
     <p class="desc">{{ site.data.climbed_munros.size }} Munros climbed so far.</p>
   </header>
 
-  <div class="grid hike-grid">
+  <div class="munro-list">
     {% for mountain in site.data.climbed_munros %}
-      <a class="card" href="{{ mountain.report_url | relative_url }}">
-        <h2>{{ mountain.name }}</h2>
-        <p class="meta">{{ mountain.height }} m &middot; {{ mountain.region }}</p>
-        {% if mountain.climbed_date %}<p class="meta">Climbed {{ mountain.climbed_date }}</p>{% endif %}
-        {% if mountain.companions %}<p class="meta">{% if mountain.companions == 'Solo' %}Solo{% else %}With {{ mountain.companions }}{% endif %}</p>{% endif %}
-        <p>Report: {{ mountain.report_title }}</p>
-      </a>
+      <article class="munro-item">
+        <h2><a href="{{ mountain.report_url | relative_url }}">{{ mountain.name }}</a></h2>
+        <p class="meta">
+          {{ mountain.height }} m &middot; {{ mountain.region }}
+          {% if mountain.climbed_date %}&middot; Climbed {{ mountain.climbed_date }}{% endif %}
+          {% if mountain.companions %}&middot; {% if mountain.companions == 'Solo' %}Solo{% else %}With {{ mountain.companions }}{% endif %}{% endif %}
+        </p>
+        <p class="report-link">Report: <a href="{{ mountain.report_url | relative_url }}">{{ mountain.report_title }}</a></p>
+      </article>
     {% endfor %}
   </div>
 </div>
