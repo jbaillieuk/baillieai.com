@@ -1,0 +1,20 @@
+---
+layout: default
+title: about
+---
+<section class="hero">
+  <img class="profile" src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="Jordan Baillie">
+  <div>
+    <h1>Jordan Baillie</h1>
+    <p>This is my personal website to collate projects, notes, images and various things I want to keep in one place.</p>
+    <div class="actions">
+      <a class="button" href="mailto:jordan@baillieai.com">Email</a>
+      <a class="button" href="https://www.linkedin.com/in/jordanbaillie/">LinkedIn</a>
+    </div>
+  </div>
+</section>
+<section class="grid">
+  <a class="card" href="{{ '/hiking/' | relative_url }}"><h2>Hiking</h2><p class="meta">{{ site.data.climbed_munros.size }} Munros climbed</p><p>Munro records, routes, dates, and companions.</p></a>
+  <a class="card" href="{{ '/projects/' | relative_url }}"><h2>Projects</h2><p>This website is the project.</p></a>
+  <a class="card" href="{{ '/blog/' | relative_url }}"><h2>Blog</h2><p>Notes and updates.</p></a>
+</section>

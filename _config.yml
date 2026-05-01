@@ -1,0 +1,16 @@
+title: Jordan Baillie
+description: Personal website for projects, notes, images, and hiking records.
+url: https://baillieai.com
+baseurl: ""
+markdown: kramdown
+permalink: pretty
+collections:
+  hikes:
+    output: true
+    permalink: /hiking/:name/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
