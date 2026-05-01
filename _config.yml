@@ -2,8 +2,17 @@ title: Jordan Baillie
 description: Personal website for projects, notes, images, and hiking records.
 url: https://baillieai.com
 baseurl: ""
+first_name: Jordan
+middle_name:
+last_name: Baillie
+max_width: 930px
+navbar_fixed: true
+footer_fixed: false
+enable_darkmode: true
 markdown: kramdown
 permalink: pretty
+sass:
+  sourcemap: never
 collections:
   hikes:
     output: true
