@@ -1,17 +1,22 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
-<table class="table">
-  <tbody>
-    {% if page.display_date or page.date %}<tr><th>Date</th><td>{% if page.display_date %}{{ page.display_date }}{% else %}{{ page.date | date: '%-d %B %Y' }}{% endif %}</td></tr>{% endif %}
-    {% if page.companions %}<tr><th>With</th><td>{{ page.companions }}</td></tr>{% endif %}
-    {% if page.location %}<tr><th>Location</th><td>{{ page.location }}</td></tr>{% endif %}
-    {% if page.route %}<tr><th>Route</th><td>{{ page.route }}</td></tr>{% endif %}
-    {% if page.distance %}<tr><th>Distance</th><td>{{ page.distance }}</td></tr>{% endif %}
-    {% if page.time_taken %}<tr><th>Time</th><td>{{ page.time_taken }}</td></tr>{% endif %}
-    {% if page.ascent %}<tr><th>Ascent</th><td>{{ page.ascent }}</td></tr>{% endif %}
-    {% if page.weather %}<tr><th>Weather</th><td>{{ page.weather }}</td></tr>{% endif %}
-    {% if page.source_url %}<tr><th>Original report</th><td><a href="{{ page.source_url }}">{{ page.source_label | default: 'View source' }}</a></td></tr>{% endif %}
-  </tbody>
-</table>
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
+
+  <table class="table">
+    <tbody>
+      {% if page.display_date or page.date %}<tr><th>Date</th><td>{% if page.display_date %}{{ page.display_date }}{% else %}{{ page.date | date: '%-d %B %Y' }}{% endif %}</td></tr>{% endif %}
+      {% if page.companions %}<tr><th>With</th><td>{{ page.companions }}</td></tr>{% endif %}
+      {% if page.location %}<tr><th>Location</th><td>{{ page.location }}</td></tr>{% endif %}
+      {% if page.route %}<tr><th>Route</th><td>{{ page.route }}</td></tr>{% endif %}
+      {% if page.distance %}<tr><th>Distance</th><td>{{ page.distance }}</td></tr>{% endif %}
+      {% if page.time_taken %}<tr><th>Time</th><td>{{ page.time_taken }}</td></tr>{% endif %}
+      {% if page.ascent %}<tr><th>Ascent</th><td>{{ page.ascent }}</td></tr>{% endif %}
+      {% if page.weather %}<tr><th>Weather</th><td>{{ page.weather }}</td></tr>{% endif %}
+      {% if page.source_url %}<tr><th>Original report</th><td><a href="{{ page.source_url }}">{{ page.source_label | default: 'View source' }}</a></td></tr>{% endif %}
+    </tbody>
+  </table>
+</div>

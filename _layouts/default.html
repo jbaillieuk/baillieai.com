@@ -5,55 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }} | {% endif %}Jordan Baillie</title>
   <meta name="description" content="{{ site.description }}">
-  <meta name="theme-color" content="#f7f3ea">
+  <meta name="theme-color" content="#ffffff">
   <script>
     (function () {
-      var savedTheme = localStorage.getItem("theme");
-      var systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      document.documentElement.setAttribute("data-theme", savedTheme || (systemDark ? "dark" : "light"));
+      var saved = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.setAttribute("data-theme-setting", saved || "system");
     })();
   </script>
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 </head>
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="{{ '/' | relative_url }}">Jordan Baillie</a>
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="{{ '/' | relative_url }}">about</a>
-          <a href="{{ '/projects/' | relative_url }}">projects</a>
-          <a href="{{ '/hiking/' | relative_url }}">hiking</a>
-          <a href="{{ '/blog/' | relative_url }}">blog</a>
+<body class="fixed-top-nav">
+  <header>
+    <nav class="navbar navbar-light fixed-top">
+      <div class="container nav-container">
+        <a class="navbar-brand title" href="{{ '/' | relative_url }}">
+          <span class="font-weight-bold">Jordan</span> Baillie
+        </a>
+        <div class="navbar-nav">
+          <a class="nav-link" href="{{ '/' | relative_url }}">about</a>
+          <a class="nav-link" href="{{ '/projects/' | relative_url }}">projects</a>
+          <a class="nav-link" href="{{ '/hiking/' | relative_url }}">hiking</a>
+          <a class="nav-link" href="{{ '/blog/' | relative_url }}">blog</a>
+          <button id="light-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <svg id="light-toggle-light" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4.5V2m0 20v-2.5M4.5 12H2m20 0h-2.5M5.64 5.64 3.87 3.87m16.26 16.26-1.77-1.77m0-12.72 1.77-1.77M3.87 20.13l1.77-1.77"/><circle cx="12" cy="12" r="4"/></svg>
+            <svg id="light-toggle-dark" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 7 7 0 1 0 20.5 14.5Z"/></svg>
+          </button>
         </div>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
-          <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M12 4.5V2m0 20v-2.5M4.5 12H2m20 0h-2.5M5.64 5.64 3.87 3.87m16.26 16.26-1.77-1.77m0-12.72 1.77-1.77M3.87 20.13l1.77-1.77"/>
-            <circle cx="12" cy="12" r="4"/>
-          </svg>
-          <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 7 7 0 1 0 20.5 14.5Z"/>
-          </svg>
-        </button>
       </div>
     </nav>
   </header>
-  <main>{{ content }}</main>
+  <main class="container mt-5" role="main">{{ content }}</main>
   <footer class="site-footer">
-    <span>&copy; {{ 'now' | date: '%Y' }} Jordan Baillie</span>
-    <span class="footer-links">
-      <a href="mailto:jordan@baillieai.com">Email</a>
-      <a href="https://www.linkedin.com/in/jordanbaillie/">LinkedIn</a>
-    </span>
+    <div class="container footer-container">
+      <span>&copy; {{ 'now' | date: '%Y' }} Jordan Baillie</span>
+      <span class="footer-links">
+        <a href="mailto:jordan@baillieai.com">Email</a>
+        <a href="https://www.linkedin.com/in/jordanbaillie/">LinkedIn</a>
+      </span>
+    </div>
   </footer>
   <script>
     (function () {
-      var toggle = document.querySelector("[data-theme-toggle]");
+      var toggle = document.getElementById("light-toggle");
       if (!toggle) return;
       toggle.addEventListener("click", function () {
         var current = document.documentElement.getAttribute("data-theme") || "light";
         var next = current === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", next);
+        document.documentElement.setAttribute("data-theme-setting", next);
         localStorage.setItem("theme", next);
       });
     })();
